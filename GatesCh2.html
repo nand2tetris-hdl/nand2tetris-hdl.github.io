@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            * {
+                font-family: Georgia, serif;
+            }
+            
+            body {
+                margin:auto;
+                width: 95%;
+            }
+            
+            #title {
+                background-color: orange;
+                margin-top: 15px;
+                margin-bottom: 0;
+                padding: 1.5%;
+            }
+            
+            #intro {
+                border-right: 1px solid black;
+                border-left: 1px solid black;
+                border-bottom: 1px solid black;
+                padding: 25px;
+                padding-left: 50px
+            }
+            
+            #footer {
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+                margin-bottom: 10px;
+                margin-top: 100px;
+                text-align: center;
+            }
+            
+            #footer p {
+                opacity: .8;
+            }
+			
+			.info {
+				border-left: 6px solid gray;
+				background-color: #e6e6e6;
+			}
+            
+            .gateHeader {
+                background-color: orange;
+				margin: 0 10px;
+                padding: 0;
+				display: inline-block;
+            }
+        
+            .gate {
+                border: 3px solid orange;
+                border-radius: 1px;
+                background-color: orange;
+                margin: 40px auto;
+            }
+            
+            .content {
+                background-color: white;
+                padding: 20px;
+            }
+            
+            .left,.middle,.right {
+                display: inline-block;
+                margin: 20px 0;
+                vertical-align: top;
+            }
+            
+            .left {
+                margin-right: 20px;
+            }
+            
+            .right {
+                margin-left: 20px;
+            }
+            
+            table {
+                background-color: #ffd199;
+                border-radius: 5px;
+                padding: 10px;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            table th {
+                width: 20px;
+            }
+            
+            table td,th {
+                border: 1px solid orange;
+                padding: 5px;
+            }
+            
+            .tTable {
+                width: 50px;
+            }
+            
+            .tTable td {
+                text-align: center;
+            }
+            
+            .tTable th {
+                border-width: 1px 1px 3px 1px;
+            }
+            
+            .hTHeader {
+                border-width: 1px 3px 1px 1px;
+            }
+			
+			.backlink {
+				display: block;
+			}
+            
+            img {
+                border: 1px solid orange;
+                padding: 0;
+                margin: 0;
+            }
+            
+            textarea {
+                border: 1px solid orange;
+                background-color: #ffd199;
+                color: darkred;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1 id="title">HDL API & Gate Design Reference</h1>
+        <div id="intro">
+            <p>This document details API, schematic design, and HDL implementation for the <a href="http://nand2tetris.org/">nand2tetris</a> course.</p>
+			<span class="info"><b>Note:</b> schematics, truth tables, and HDL are only included where appropriate.</span>
+            <ul>
+                <li><a href="#not16">Not16</a></li>
+                <li><a href="#and16">And16</a></li>
+				<li><a href="#or16">Or16</a></li>
+                <li><a href="#or8">Or8Way</a></li>
+                <li><a href="#mux">Mux</a></li>
+                <li><a href="#mux16">Mux16</a></li>
+                <li><a href="#mux4">Mux4Way</a></li>
+                <li><a href="#mux416">Mux4Way16</a></li>
+                <li><a href="#mux8">Mux8Way</a></li>
+                <li><a href="#mux816">Mux8Way16</a></li>
+                <li><a href="#dmux">DMux</a></li>
+                <li><a href="#dmux4">DMux4Way</a></li>
+                <li><a href="#dmux8">DMux8Way</a></li>
+            </ul>
+        </div>
+        
+        <div id="not16" class="gate">
+            <div class="gateHeader">
+                <h2>Not16</h2>
+            </div>
+            <div class="content">
+                <table id="not16Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in[16]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+					<tr>
+                        <th class="hTHeader">SOP</th>
+                        <td>!in[i]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <textarea disabled="true" rows="10" cols="50">
+CHIP Not16 {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    Not(in=in[0], out=out[0]);
+    Not(in=in[1], out=out[1]);
+    Not(in=in[2], out=out[2]);
+    Not(in=in[3], out=out[3]);
+    Not(in=in[4], out=out[4]);
+    Not(in=in[5], out=out[5]);
+    Not(in=in[6], out=out[6]);
+    Not(in=in[7], out=out[7]);
+    Not(in=in[8], out=out[8]);
+    Not(in=in[9], out=out[9]);
+    Not(in=in[10], out=out[10]);
+    Not(in=in[11], out=out[11]);
+    Not(in=in[12], out=out[12]);
+    Not(in=in[13], out=out[13]);
+    Not(in=in[14], out=out[14]);
+    Not(in=in[15], out=out[15]);
+}
+                    </textarea>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="and16" class="gate">
+            <div class="gateHeader">
+                <h2>And16</h2>
+            </div>
+            <div class="content">
+                <table id="and16Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>a[16], b[16]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">SOP</th>
+                        <td>ab</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <textarea disabled="true" rows="10" cols="50">
+CHIP And16 {
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+    And(a=a[0], b=b[0], out=out[0]);
+    And(a=a[1], b=b[1], out=out[1]);
+    And(a=a[2], b=b[2], out=out[2]);
+    And(a=a[3], b=b[3], out=out[3]);
+    And(a=a[4], b=b[4], out=out[4]);
+    And(a=a[5], b=b[5], out=out[5]);
+    And(a=a[6], b=b[6], out=out[6]);
+    And(a=a[7], b=b[7], out=out[7]);
+    And(a=a[8], b=b[8], out=out[8]);
+    And(a=a[9], b=b[9], out=out[9]);
+    And(a=a[10], b=b[10], out=out[10]);
+    And(a=a[11], b=b[11], out=out[11]);
+    And(a=a[12], b=b[12], out=out[12]);
+    And(a=a[13], b=b[13], out=out[13]);
+    And(a=a[14], b=b[14], out=out[14]);
+    And(a=a[15], b=b[15], out=out[15]);
+}
+                    </textarea>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="or8" class="gate">
+            <div class="gateHeader">
+                <h2>Or8Way</h2>
+            </div>
+            <div class="content">
+                <table id="or8Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in[8]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">SOP</th>
+                        <td>in[0]+in[1]+..+in[7]</td>
+                    </tr>
+                </table>
+				<div class="left">
+					<img src="https://dl.dropboxusercontent.com/content_link/bVdQTzwAXBkVujAgQ0vePihuJwOiex6Uez2hT8tVlpcPNXC45BBAEBWunXRh24rB/file?raw=1"/>
+				</div>
+				<div class="right">
+					<textarea disabled="true" rows="10" cols="50">
+CHIP Or8Way {
+IN in[8];
+OUT out;
+
+PARTS:
+Or(a=in[0], b=in[1], out=or1);
+Or(a=in[2], b=in[3], out=or2);
+Or(a=in[4], b=in[5], out=or3);
+Or(a=in[6], b=in[7], out=or4);
+Or(a=or1, b=or2, out=or5);
+Or(a=or3, b=or4, out=or6);
+Or(a=or5, b=or6, out=out);
+}
+					</textarea>
+				</div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+		
+		<div id="or16" class="gate">
+            <div class="gateHeader">
+                <h2>Or16</h2>
+            </div>
+            <div class="content">
+                <table id="or16Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>a[16], b[16]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">SOP</th>
+                        <td>a[i]+b[i]</td>
+                    </tr>
+                </table>
+				<div class="left">
+					<textarea disabled="true" rows="10" cols="50">
+CHIP Or16 {
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+    Or(a=a[0], b=b[0], out=out[0]);
+    Or(a=a[1], b=b[1], out=out[1]);
+	Or(a=a[2], b=b[2], out=out[2]);
+	Or(a=a[3], b=b[3], out=out[3]);
+	Or(a=a[4], b=b[4], out=out[4]);
+	Or(a=a[5], b=b[5], out=out[5]);
+	Or(a=a[6], b=b[6], out=out[6]);
+	Or(a=a[7], b=b[7], out=out[7]);
+	Or(a=a[8], b=b[8], out=out[8]);
+	Or(a=a[9], b=b[9], out=out[9]);
+	Or(a=a[10], b=b[10], out=out[10]);
+	Or(a=a[11], b=b[11], out=out[11]);
+	Or(a=a[12], b=b[12], out=out[12]);
+	Or(a=a[13], b=b[13], out=out[13]);
+	Or(a=a[14], b=b[14], out=out[14]);
+	Or(a=a[15], b=b[15], out=out[15]);
+}
+					</textarea>
+				</div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="mux" class="gate">
+            <div class="gateHeader">
+                <h2>Mux</h2>
+            </div>
+            <div class="content">
+                <table id="muxTable">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>a, b, sel</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">SOP</th>
+                        <td>s&#0772;a+s&#0772;b</td>
+                    </tr>
+                </table>
+                
+                <div class="left">
+                    <table class="tTable">
+                        <tr>
+                            <th>sel</th>
+							<th>out</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+							<td>a</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+							<td>b</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="middle">
+                    <img src="https://dl.dropboxusercontent.com/content_link/TGyKwgqqS07kWbo8bawVmUN5yZKI3iPrsg275yyOKFEbl0tdYfPbop5AYPHgS6By/file?raw=1"/>
+                </div>
+                <div class="right">
+                    <textarea disabled="true" rows="10" cols="50">
+CHIP Mux {
+    IN a, b, sel;
+    OUT out;
+
+    PARTS:
+    Not(in=sel, out=notSel);
+    And(a=a, b=notSel, out=andA);
+    And(a=sel, b=b, out=andB);
+    Or(a=andA, b=andB, out=out);
+}
+                        </textarea>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="mux16" class="gate">
+            <div class="gateHeader">
+                <h2>Mux16</h2>
+            </div>
+            <div class="content">
+                <table id="mux16Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>a[16], b[16], sel</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <textarea disabled="true" rows="10" cols="50">
+CHIP Mux16 {
+    IN a[16], b[16], sel;
+    OUT out[16];
+
+    PARTS:
+    Mux(a=a[0], b=b[0], sel=sel, out=out[0]);
+    Mux(a=a[1], b=b[1], sel=sel, out=out[1]);
+    Mux(a=a[2], b=b[2], sel=sel, out=out[2]);
+    Mux(a=a[3], b=b[3], sel=sel, out=out[3]);
+    Mux(a=a[4], b=b[4], sel=sel, out=out[4]);
+    Mux(a=a[5], b=b[5], sel=sel, out=out[5]);
+    Mux(a=a[6], b=b[6], sel=sel, out=out[6]);
+    Mux(a=a[7], b=b[7], sel=sel, out=out[7]);
+    Mux(a=a[8], b=b[8], sel=sel, out=out[8]);
+    Mux(a=a[9], b=b[9], sel=sel, out=out[9]);
+    Mux(a=a[10], b=b[10], sel=sel, out=out[10]);
+    Mux(a=a[11], b=b[11], sel=sel, out=out[11]);
+    Mux(a=a[12], b=b[12], sel=sel, out=out[12]);
+    Mux(a=a[13], b=b[13], sel=sel, out=out[13]);
+    Mux(a=a[14], b=b[14], sel=sel, out=out[14]);
+    Mux(a=a[15], b=b[15], sel=sel, out=out[15]);
+}
+                    </textarea>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="mux4" class="gate">
+            <div class="gateHeader">
+                <h2>Mux4Way</h2>
+            </div>
+            <div class="content">
+                <table id="mux4Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>a, b, c, d, sel[2]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <table class="tTable">
+                        <tr>
+                            <th>sel[0]</th>
+                            <th>sel[1]</th>
+                            <th>out</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>a</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>b</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>c</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>d</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="right">
+                    <img src="https://dl.dropboxusercontent.com/content_link/MtPpVyYdXDlLiRD3pGaBqofyHu54UAuslmXtpd89eWbMcpDyzxZAXjCtHdjJoF84/file?raw=1"/>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="mux416" class="gate">
+            <div class="gateHeader">
+                <h2>Mux4Way16</h2>
+            </div>
+            <div class="content">
+                <table id="mux416Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>a[16], b[16], sel[2]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <textarea disabled="true" rows="10" cols="50">
+CHIP Mux4Way16 {
+    IN a[16], b[16], c[16], d[16], sel[2];
+    OUT out[16];
+
+    PARTS:
+    Mux16(a=a, b=b, sel=sel[0], out=muxAB);
+    Mux16(a=c, b=d, sel=sel[0], out=muxCD);
+    Mux16(a=muxAB, b=muxCD, sel=sel[1], out=out);
+}
+                    </textarea>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="mux8" class="gate">
+            <div class="gateHeader">
+                <h2>Mux8Way</h2>
+            </div>
+            <div class="content">
+                <table id="mux8Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>a, b, c, d, e, f, g, h, sel[3]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <table class="tTable">
+                        <tr>
+                            <th>sel[0]</th>
+                            <th>sel[1]</th>
+							<th>sel[2]</th>
+                            <th>out</th>
+                        </tr>
+                        <tr>
+							<td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>a</td>
+                        </tr>
+						<tr>
+							<td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>b</td>
+                        </tr>
+						<tr>
+							<td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>c</td>
+                        </tr>
+						<tr>
+							<td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>d</td>
+                        </tr>
+						<tr>
+							<td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>e</td>
+                        </tr>
+						<tr>
+							<td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>f</td>
+                        </tr>
+						<tr>
+							<td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>g</td>
+                        </tr>
+						<tr>
+							<td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>h</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="right">
+                    <img src="https://dl.dropboxusercontent.com/content_link/lfdqfY9gfunnI60XfQt84a9Yx8QqaO6GgRvgBDOmlbm6n8KtqLxqmImy8kGHIFu0/file?raw=1"/>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="mux816" class="gate">
+            <div class="gateHeader">
+                <h2>Mux8Way16</h2>
+            </div>
+            <div class="content">
+                <table id="mux816Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>a[16], b[16], c[16], d[16], e[16], f[16], g[16], h[16], sel[3]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <textarea disabled="true" rows="10" cols="50">
+CHIP Mux8Way16 {
+    IN a[16], b[16], c[16], d[16],
+       e[16], f[16], g[16], h[16],
+       sel[3];
+    OUT out[16];
+
+    PARTS:
+    Mux4Way16(a=a, b=b, c=c, d=d, sel=sel[0..1], out=muxAD);
+    Mux4Way16(a=e, b=f, c=g, d=h, sel=sel[0..1], out=muxEH);
+    Mux16(a=muxAD, b=muxEH, sel=sel[2], out=out);
+}
+                    </textarea>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="dmux" class="gate">
+            <div class="gateHeader">
+                <h2>DMux</h2>
+            </div>
+            <div class="content">
+                <table id="dmuxTable">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in, sel</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>a, b</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">SOP</th>
+                        <td>a=xs&#0772;, b=xs</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <table class="tTable">
+                        <tr>
+                            <th>sel</th>
+                            <th>a</th>
+                            <th>b</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>in</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>in</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="middle">
+                    <img src="https://dl.dropboxusercontent.com/content_link/KLYWFuN8kDbBiW69j7klJHuYnQsb4kk3HUsmXSsQUVQ7jDlYqIjMLmEWUX1wTNof/file?raw=1"/>
+                </div>
+                <div class="right">
+                    <textarea disabled="true" rows="10" cols="50">
+CHIP DMux {
+    IN in, sel;
+    OUT a, b;
+
+    PARTS:
+    Not(in=sel, out=notSel);
+    And(a=notSel, b=in, out=a);
+    And(a=in, b=sel, out=b);
+}
+                    </textarea>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="dmux4" class="gate">
+            <div class="gateHeader">
+                <h2>DMux4Way</h2>
+            </div>
+            <div class="content">
+                <table id="dmux4Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in, sel[2]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>a, b, c, d</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <table class="tTable">
+                        <tr>
+                             <th>sel[0]</th>
+                            <th>sel[1]</th>
+                            <th>a</th>
+							<th>b</th>
+							<th>c</th>
+							<th>d</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>in</td>
+							<td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+						<tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+							<td>in</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+						<tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+							<td>0</td>
+                            <td>in</td>
+                            <td>0</td>
+                        </tr>
+						<tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+							<td>0</td>
+                            <td>0</td>
+                            <td>in</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="middle">
+                    <img src="https://dl.dropboxusercontent.com/content_link/eLhLQwK9EN3cjXTkD8RerQvVtiIAV7OkOoWK9JS8W9P0384M7oxfmmB2LKC7Vgmi/file?raw=1"/>
+                </div>
+                <div class="left">
+                    <textarea disabled="true" rows="10" cols="50">
+CHIP DMux4Way {
+    IN in, sel[2];
+    OUT a, b, c, d;
+
+    PARTS:
+    DMux(in=in, sel=sel[1], a=dIn0, b=dIn1);
+    DMux(in=dIn0, sel=sel[0], a=a, b=b);
+    DMux(in=dIn1, sel=sel[0], a=c, b=d);
+}
+                    </textarea>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="dmux8" class="gate">
+            <div class="gateHeader">
+                <h2>DMux8Way</h2>
+            </div>
+            <div class="content">
+                <table id="dmux8Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>a, b, c, d, e, f, g, h, sel[3]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <table class="tTable">
+                        <tr>
+                            <th>sel[0]</th>
+                            <th>sel[1]</th>
+                            <th>sel[2]</th>
+							<th>out</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+							<td>a</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+							<td>b</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+							<td>c</td>
+                        </tr>
+						<tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+							<td>d</td>
+                        </tr>
+						<tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+							<td>e</td>
+                        </tr>
+						<tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+							<td>f</td>
+                        </tr>
+						<tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+							<td>g</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+							<td>h</td>
+                        </tr>
+                    </table>
+					<span class="info"><b>Note:</b> this table is shortened.</span>
+                </div>
+                <div class="middle">
+                    <img src="https://dl.dropboxusercontent.com/content_link/7WMeqOphP82xdxEjofPXeXpTXgKvDu2EDBDzl183OMkusnsmVLhbA5yHefyd4b2T/file?raw=1"/>
+                </div>
+                <div class="right">
+                    <textarea disabled="true" rows="10" cols="50">
+CHIP DMux8Way {
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h;
+
+    PARTS:
+    DMux(in=in, sel=sel[2], a=dIn0, b=dIn1);
+    DMux4Way(in=dIn0, sel=sel[0..1], a=a, b=b, c=c, d=d);
+    DMux4Way(in=dIn1, sel=sel[0..1], a=e, b=f, c=g, d=h);
+}
+                    </textarea>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <p>By Sean McCallum<br/><br/>
+            Sources/Tools:<br/>
+            <a href="http://www.nand2tetris.org/">nand2tetris</a><br/>
+			<a href="http://nand2tetris.org/software/HDL%20Survival%20Guide.html">HDL Survival Guide</a><br/>
+            <a href="https://www.circuitlab.com/">circuitlab</a>
+            </p>
+        </div>
+    </body>
+</html>
