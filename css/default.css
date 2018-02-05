@@ -15,9 +15,10 @@ body {
 }
 
 #intro {
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+    border-right: 1px solid orange;
+    border-left: 1px solid orange;
+    border-bottom: 1px solid orange;
+    margin-bottom: 60px;
     padding: 25px;
     padding-left: 50px
 }
@@ -60,7 +61,7 @@ body {
 
 .left,.middle,.right {
     display: inline-block;
-    margin: 20px 0;
+    margin: 20px 0px;
     vertical-align: top;
 }
 
@@ -68,8 +69,8 @@ body {
     margin-right: 20px;
 }
 
-.right {
-    margin-left: 20px;
+.middle {
+    margin-right: 20px;
 }
 
 table {

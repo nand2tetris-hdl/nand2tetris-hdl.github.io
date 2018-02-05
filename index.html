@@ -11,6 +11,15 @@
         <meta name="theme-color" content="#ffffff">
         <link rel="stylesheet" type="text/css" href="css/default.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            //Dynamic textarea size (https://stackoverflow.com/a/25820115/4036475)
+            $('textarea').on('keyup',function() {
+              $(this).css('width','0px');
+              $(this).css('height','0px');
+              $(this).css('width',Math.max(50,this.scrollWidth)+'px');
+              $(this).css('height',Math.max(50,this.scrollHeight)+'px');
+            });
+        </script>
     </head>
     <body>
         <h1 id="title">HDL API & Gate Design Reference</h1>
@@ -54,7 +63,7 @@
                     </tr>
                 </table>
                 <div class="left">
-                    <textarea id="not16Area" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="not16Area" disabled="true" rows="10" cols="50" wrap="soft""></textarea>
                     <script>$("#not16Area").load("resources/Not16.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -81,7 +90,7 @@
                     </tr>
                 </table>
                 <div class="left">
-                    <textarea id="and16Area" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="and16Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#and16Area").load("resources/And16.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -111,7 +120,7 @@
 					<img src="resources/or8.png"/>
 				</div>
 				<div class="right">
-                    <textarea id="or8Area" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="or8Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#or8Area").load("resources/Or8Way.hdl")</script>
 				</div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -138,7 +147,7 @@
                     </tr>
                 </table>
 				<div class="left">
-                    <textarea id="or16Area" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="or16Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#or16Area").load("resources/Or16.hdl")</script>
 				</div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -185,7 +194,7 @@
                     <img src="resources/mux.png"/>
                 </div>
                 <div class="right">
-                    <textarea id="muxArea" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="muxArea" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#muxArea").load("resources/Mux.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -208,7 +217,7 @@
                     </tr>
                 </table>
                 <div class="left">
-                    <textarea id="mux16Area" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="mux16Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#mux16Area").load("resources/Mux16.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -282,7 +291,7 @@
                     </tr>
                 </table>
                 <div class="left">
-                    <textarea id="mux416Area" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="mux416Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#mux416Area").load("resources/Mux4Way16.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -385,7 +394,7 @@
                     </tr>
                 </table>
                 <div class="left">
-                    <textarea id="mux816Area" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="mux816Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#mux816Area").load("resources/Mux8Way16.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -434,7 +443,7 @@
                     <img src="resources/dmux.png"/>
                 </div>
                 <div class="right">
-                    <textarea id="dmuxArea" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="dmuxArea" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#dmuxArea").load("resources/DMux.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -504,7 +513,7 @@
                     <img src="resources/dmux4.png"/>
                 </div>
                 <div class="left">
-                    <textarea id="dmux4Area" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="dmux4Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#dmux4Area").load("resources/DMux4Way.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
@@ -589,7 +598,7 @@
                     <img src="resources/dmux8.png"/>
                 </div>
                 <div class="right">
-                    <textarea id="dmux8Area" disabled="true" rows="10" cols="50"></textarea>
+                    <textarea id="dmux8Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#dmux8Area").load("resources/DMux8Way.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
