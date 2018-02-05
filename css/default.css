@@ -1,0 +1,122 @@
+* {
+    font-family: Georgia, serif;
+}
+
+body {
+    margin:auto;
+    width: 95%;
+}
+
+#title {
+    background-color: orange;
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding: 1.5%;
+}
+
+#intro {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 25px;
+    padding-left: 50px
+}
+
+#footer {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+#footer p {
+    opacity: .8;
+}
+
+.info {
+    border-left: 6px solid gray;
+    background-color: #e6e6e6;
+}
+
+.gateHeader {
+    background-color: orange;
+    margin: 0 10px;
+    padding: 0;
+    display: inline-block;
+}
+
+.gate {
+    border: 3px solid orange;
+    border-radius: 1px;
+    background-color: orange;
+    margin: 40px auto;
+}
+
+.content {
+    background-color: white;
+    padding: 20px;
+}
+
+.left,.middle,.right {
+    display: inline-block;
+    margin: 20px 0;
+    vertical-align: top;
+}
+
+.left {
+    margin-right: 20px;
+}
+
+.right {
+    margin-left: 20px;
+}
+
+table {
+    background-color: #ffd199;
+    border-radius: 5px;
+    padding: 10px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th {
+    width: 20px;
+}
+
+table td,th {
+    border: 1px solid orange;
+    padding: 5px;
+}
+
+.tTable {
+    width: 50px;
+}
+
+.tTable td {
+    text-align: center;
+}
+
+.tTable th {
+    border-width: 1px 1px 3px 1px;
+}
+
+.hTHeader {
+    border-width: 1px 3px 1px 1px;
+}
+
+.backlink {
+    display: block;
+}
+
+img {
+    border: 1px solid orange;
+    padding: 0;
+    margin: 0;
+}
+
+textarea {
+    border: 1px solid orange;
+    background-color: #ffd199;
+    color: darkred;
+}
