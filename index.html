@@ -40,6 +40,14 @@
                 <li><a href="#dmux">DMux</a></li>
                 <li><a href="#dmux4">DMux4Way</a></li>
                 <li><a href="#dmux8">DMux8Way</a></li>
+                <li><a href="#bit">Bit</a></li>
+                <li><a href="#reg">Register</a></li>
+                <li><a href="#pc">PC</a></li>
+                <li><a href="#ram8">RAM8</a></li>
+                <li><a href="#ram64">RAM64</a></li>
+                <li><a href="#ram512">RAM512</a></li>
+                <li><a href="#ram4K">RAM4K</a></li>
+                <li><a href="#ram16K">RAM16K</a></li>
             </ul>
         </div>
 
@@ -528,11 +536,11 @@
                 <table id="dmux8Table">
                     <tr>
                         <th class="hTHeader">Inputs</th>
-                        <td>a, b, c, d, e, f, g, h, sel[3]</td>
+                        <td>in, sel[3]</td>
                     </tr>
                     <tr>
                         <th class="hTHeader">Outputs</th>
-                        <td>out</td>
+                        <td>a, b, c, d, e, f, g, h, out</td>
                     </tr>
                 </table>
                 <div class="left">
@@ -600,6 +608,202 @@
                 <div class="right">
                     <textarea id="dmux8Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
                     <script>$("#dmux8Area").load("resources/01/DMux8Way.hdl")</script>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+
+        <div id="bit" class="gate">
+            <div class="gateHeader">
+                <h2>Bit</h2>
+            </div>
+            <div class="content">
+                <table id="bitTable">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in, load</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <img src="resources/img/bit.png"/>
+                </div>
+                <div class="middle">
+                    <textarea id="bitArea" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
+                    <script>$("#bitArea").load("resources/03/a/Bit.hdl")</script>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+
+        <div id="reg" class="gate">
+            <div class="gateHeader">
+                <h2>Register</h2>
+            </div>
+            <div class="content">
+                <table id="regTable">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in[16], load</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <textarea id="regArea" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
+                    <script>$("#regArea").load("resources/03/a/Register.hdl")</script>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+
+        <div id="pc" class="gate">
+            <div class="gateHeader">
+                <h2>PC</h2>
+            </div>
+            <div class="content">
+                <table id="pcTable">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in[16], load, inc, reset</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <img src="resources/img/pc.png"/>
+                </div>
+                <div class="middle">
+                    <textarea id="pcArea" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
+                    <script>$("#pcArea").load("resources/03/a/PC.hdl")</script>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+
+        <div id="ram8" class="gate">
+            <div class="gateHeader">
+                <h2>RAM8</h2>
+            </div>
+            <div class="content">
+                <table id="ram8Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in[16], load, address[3]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <img src="resources/img/ram8.png"/>
+                </div>
+                <div class="middle">
+                    <textarea id="ram8Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
+                    <script>$("#ram8Area").load("resources/03/a/RAM8.hdl")</script>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+
+        <div id="ram64" class="gate">
+            <div class="gateHeader">
+                <h2>RAM64</h2>
+            </div>
+            <div class="content">
+                <table id="ram64Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in[16], load, address[6]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <textarea id="ram64Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
+                    <script>$("#ram64Area").load("resources/03/a/RAM64.hdl")</script>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+
+        <div id="ram512" class="gate">
+            <div class="gateHeader">
+                <h2>RAM512</h2>
+            </div>
+            <div class="content">
+                <table id="ram512Table">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in[16], load, address[9]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <textarea id="ram512Area" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
+                    <script>$("#ram512Area").load("resources/03/b/RAM512.hdl")</script>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+
+        <div id="ram4K" class="gate">
+            <div class="gateHeader">
+                <h2>RAM4K</h2>
+            </div>
+            <div class="content">
+                <table id="ram4KTable">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in[16], load, address[9]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <textarea id="ram4KArea" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
+                    <script>$("#ram4KArea").load("resources/03/b/RAM4K.hdl")</script>
+                </div>
+				<a href="#title" class="backlink">Back to top</a>
+            </div>
+        </div>
+
+        <div id="ram16K" class="gate">
+            <div class="gateHeader">
+                <h2>RAM16K</h2>
+            </div>
+            <div class="content">
+                <table id="ram16KTable">
+                    <tr>
+                        <th class="hTHeader">Inputs</th>
+                        <td>in[16], load, address[14]</td>
+                    </tr>
+                    <tr>
+                        <th class="hTHeader">Outputs</th>
+                        <td>out[16]</td>
+                    </tr>
+                </table>
+                <div class="left">
+                    <img src="resources/img/ram16k.png"/>
+                </div>
+                <div class="middle">
+                    <textarea id="ram16KArea" disabled="true" rows="10" cols="50" wrap="soft"></textarea>
+                    <script>$("#ram16KArea").load("resources/03/b/RAM16K.hdl")</script>
                 </div>
 				<a href="#title" class="backlink">Back to top</a>
             </div>
