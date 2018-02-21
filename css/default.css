@@ -83,13 +83,11 @@ table {
 
 table th {
     width: 20px;
-    word-wrap: normal;
 }
 
 table td,th {
     border: 1px solid orange;
     padding: 5px;
-    word-wrap: normal;
 }
 
 .tTable {
@@ -122,10 +120,4 @@ textarea {
     border: 1px solid orange;
     background-color: #ffd199;
     color: darkred;
-}
-
-@media screen and (max-width=500px) {
-    .table {
-        font-size: large;
-    }
 }
