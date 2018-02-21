@@ -13,11 +13,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
             //Dynamic textarea size (https://stackoverflow.com/a/25820115/4036475)
-            $('textarea').on('keyup',function() {
-              $(this).css('width','0px');
-              $(this).css('height','0px');
-              $(this).css('width',Math.max(50,this.scrollWidth)+'px');
-              $(this).css('height',Math.max(50,this.scrollHeight)+'px');
+            $('textarea').on('onchange',function() {
+              $(this).autoResize();
             });
         </script>
     </head>
