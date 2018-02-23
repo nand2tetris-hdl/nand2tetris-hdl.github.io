@@ -116,6 +116,22 @@ img {
     margin: 0;
 }
 
+img:hover {
+    background-color: white;
+}
+
+textarea {
+    width: 500px;
+    border: 1px solid orange;
+    background-color: #ffd199;
+    color: black;
+    padding: 0px;
+}
+
+textarea:hover {
+    color: darkred;
+}
+
 @keyframes dropshadow {
     0% {box-shadow: 0px 0px 0px black;}
     10% {box-shadow: 1px 1px 1px black;}
@@ -130,15 +146,15 @@ img {
     100% {box-shadow: 6px 6px 16px black;}
 }
 
-.img-zoom {
-    background-color: white;
-    -webkit-transition: scale(5);
+.zoom {
+    background-color: none;
+    -webkit-transition: scale(1.1);
     transition: transform .2s;
 }
 
-.img-zoom:hover {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+.zoom:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
     animation-name: dropshadow;
     animation-duration: .15s;
     animation-timing-function: linear;
@@ -147,10 +163,4 @@ img {
    -o-animation-fill-mode:forwards; /*Not implemented yet*/
    -ms-animation-fill-mode:forwards; /*IE 10+*/
    animation-fill-mode:forwards; /*when the spec is finished*/
-}
-
-textarea {
-    border: 1px solid orange;
-    background-color: #ffd199;
-    color: darkred;
 }
