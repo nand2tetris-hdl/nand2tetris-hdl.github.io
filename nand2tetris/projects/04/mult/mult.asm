@@ -41,7 +41,7 @@
     @i
     D=M
     @R1
-    D=M-D
+    D=M-D2
     @END
     D;JEQ
   

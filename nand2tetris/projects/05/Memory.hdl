@@ -27,5 +27,27 @@ CHIP Memory {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    //determine which one to load
+    DMux(in=load,sel=address[14],a=ramload,b=skload);
+    DMux(in=skload,sel=address[13],a=sload,b=nothing);
+
+    //load ram and screen
+    RAM16K(in=in,load=ramload,address=address[0..13],out=ramout);
+    Screen(in=in,load=sload,address=address[0..12],out=screenout);
+  	
+    //Deal with keyboard, make sure that all bits in [0..12] are 0
+  	Keyboard(out=kbd);
+  	Or8Way(in=address[0..7], out=notkbd1);
+  	Or8Way(in[0..4]=address[8..12], in[5..7]=false, out=notkbd2);
+  	Or(a=notkbd1,b=notkbd2,out=notkbd);
+  	Mux16(a=kbd,b=false,sel=notkbd,out=kbdout);
+
+  	//determine which is the output
+  	Mux16(a=ramout,b=outsk,sel=address[14],out=out);
+  	Mux16(a=screenout,b=kbdout,sel=address[13],out=outsk);
 }
+// 0000 000 RAM start
+// 0011 FFF RAM end
+// 0100 000 Screen start
+// 0101 FFF Screen end
+// 0110 000 Keyboard
