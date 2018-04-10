@@ -1,2 +1,2 @@
-# mccallum-sgd.github.io
-https://mccallum-sgd.github.io/
+# Nand2Tetris HDL Github Pages
+https://nand2tetris-hdl.github.io/
