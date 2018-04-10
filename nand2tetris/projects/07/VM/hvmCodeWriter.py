@@ -98,7 +98,7 @@ class CodeWriter(object):
 
 
     def _WritePushD(self):
-        # TODO: write the assemby code commands for pushing the D register value onto the stack.
+        # TODO: write the assemby code commands for pushing the D register value onto the stackself.
         self._WriteCode('') # <- TODO: write Assembly code here
 
 

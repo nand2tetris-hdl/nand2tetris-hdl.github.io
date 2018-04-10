@@ -14,8 +14,8 @@ C_CALL = 9
 
 # TODO: add the VM code commands (as strings) for the arithmetic/boolean commands and the memory operations
 T_ADD = 'push'
-T_SUB =
-T_NEG 
+T_SUB = 
+T_NEG = 
 T_EQ =
 T_GT =
 T_LT =
