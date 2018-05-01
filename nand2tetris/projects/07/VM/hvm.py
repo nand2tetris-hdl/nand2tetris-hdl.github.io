@@ -1,4 +1,4 @@
-#!/usr/bin/python32
+#!C:\Program Files (x86)\Python36-32\python.exe
 """
 hvm.py -- VM Translator, Part I
 """
